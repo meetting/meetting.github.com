@@ -1,0 +1,230 @@
+<!--二手市场-->
+<template xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left" style="">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back" style=""></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title" >二 手 市 场</div>
+                <div class="subnavbar">
+                    <!-- Searchbar with auto init -->
+                    <form class="searchbar">
+                        <div class="searchbar-inner">
+                            <div class="searchbar-input-wrap">
+                                <input type="search" placeholder="Search">
+                                <i class="searchbar-icon"></i>
+                                <span class="input-clear-button"></span>
+                            </div>
+                            <span class="searchbar-disable-button">Cancel</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <!-- Searchbar backdrop -->
+            <div class="searchbar-backdrop"></div>
+            <!-- 搜索栏下面的按钮 -->
+            <div class="block searchbar-hide-on-search">
+                <div class="block" style="height: 45px">
+                    <p class="row" style="margin-top: -30px">
+                        <button class="col button color-blue" @click="shmBig(10)">全部类别</button>
+                        <button class="col button color-blue" @click="shmSmall(10,14)">旧车</button>
+                        <button class="col button color-blue" @click="shmSmall(10,15)">二手书籍</button>
+                    </p>
+                    <p class="row">
+                        <!-- In data-popover attribute we specify CSS selector of popover we need to open -->
+                        <a class="link popover-open" href="#" data-popover=".popover-links" style="width: 100%"><button class="col button color-blue">全 部 街 道</button></a>
+                    </p>
+
+                </div>
+            </div>
+            <!--选项框内容-->
+            <div class="popover popover-links">
+                <div class="popover-inner">
+                    <div class="list">
+                        <ul>
+                            <li><a class="list-button item-link" href="#">东苑</a></li>
+                            <li><a class="list-button item-link" href="#">西苑</a></li>
+                            <li><a class="list-button item-link" href="#">南苑</a></li>
+                            <li><a class="list-button item-link" href="#">北苑</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- search target list （搜索框查到的内容）-->
+            <div id="searchlist">
+                <!--<p th:text="${date.lastEditTime}"></p>-->
+                <!--<p th:text="${rs.data}"></p>-->
+                <!--<tr  th:each="user,userStat : ${list}">-->
+                <div th:each="shop : ${rs.data}">
+                    <a th:href="@{/intoshop/(shopId=${shop.shopId})}">
+                        <div class="card" >
+                            <div class="card-header" th:text="${shop.shopName}"></div>
+                            <div class="card-content card-content-padding">
+                                <div style="width: 70px;float: left;">
+                                <img style="width: 70px;height: 70px" th:src="${shop.shopImg}">
+                                </div>
+                                 <div style="width: 270px;float: left;margin-left: 17px">
+                                <font style="font-size: 14px;" th:text="${shop.shopDesc}"></font>
+                                </div>
+                            </div>
+                            <div class="card-footer" style="width: 100%">
+                                <p><span class="color-gray" th:text="${shop.lastEditTime}"></span>更新</p>
+                                <span><font color=\"#a9a9a9\">点击查看</font></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+
+            <!--</div>-->
+            <!--<div class="list searchbar-found">
+                <ul>
+                    <li class="item-content">
+                        <div class="card">
+                            <div class="card-header">Card header</div>
+                            <div class="card-content card-content-padding">Card with header and footer. Card headers are used to display card titles and footers for additional information or just for custom actions.</div>
+                            <div class="card-footer">Card Footer</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>-->
+
+        </div>
+        <!-- 页脚 -->
+        <div class="toolbar  tabbar tabbar-labels">
+            <div class="toolbar-inner">
+                <a href="/index、" class="tab-link tab-link-active ">
+                    <i class="icon f7-icons ios-only">home_fill</i>
+                    <span class="tabbar-label">首页</span>
+                </a>
+                <a href="#tab-2" class="tab-link panel-open "  data-panel="right">
+                    <i class="icon f7-icons ios-only  icon-fill">person</i>
+                    <span class="tabbar-label">我</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        methods: {
+            //查大类
+            shmBig: function (a) {
+                var $ = this.$;
+                var app = this.$app;
+                var router = this.$router;
+                var app = new Framework7();
+                var $$ = Dom7;
+                var parentCategoryId = a;
+                //查大类
+                app.request({
+                    url: '/selectShopBig',
+                    method: 'POST',
+                    async: false,
+                    data: {
+                        "parentCategoryId":parentCategoryId
+                    },
+                    success:function (rs) {
+                        var rr = JSON.parse(rs);
+                        if (rr.code == '1') {
+                            var html="";
+//                            html+="<img style='width: 100px;height: 100px' src=\""+rr.data.profileImg+"\">"+"<br><br>用户名:&nbsp;&nbsp;"+rr.data.userName + "<br><br><br>";
+                            var len=rr.data.length;
+                            //拼接搜索出来的信息
+                            for (var i=0;i<len;i++){
+                                html+="<a href=\"/intoshop/?shopId="+rr.data[i].shopId+"\">"+
+                                    "<div class=\"card\" >\n" +
+                                    "<div class=\"card-header\">"+rr.data[i].shopName+"</div>\n" +
+                                    "<div class=\"card-content card-content-padding\">"+
+                                    "<div style='width: 70px;float: left;'>"+
+                                    "<img style='width: 70px;height: 70px' src=\""+rr.data[i].shopImg+"\">"+
+                                    "</div>"+
+                                    "<div style='width: 270px;float: left;margin-left: 17px'>"+
+                                    "<font style=\"font-size: 14px; \">"+rr.data[i].shopDesc+"</font>"+
+                                    "</div>"+
+                                    "</div>\n" +
+                                    "<div class=\"card-footer\" style='width: 100%'>" +
+                                    "<p class=\"color-gray\">"+rr.data[i].lastEditTime+"更新</p>\n" +
+                                    "<span><font color=\"#a9a9a9\">点击查看</font></span>\n" +
+                                    "</div>\n" +
+                                    "</div>"+
+                                    "</a>"
+                            }
+                            $("#searchlist").html(html);
+                        }
+                        else
+                        {
+                            var html = "<span><font color=\"#a9a9a9\">无相关信息</font></span>\n"
+                            $("#searchlist").html(html);
+                        }
+                    }
+                })
+            },
+            //查小类
+            shmSmall: function (a,b) {
+                var $ = this.$;
+                var app = this.$app;
+                var router = this.$router;
+                var app = new Framework7();
+                var $$ = Dom7;
+                var parentCategoryId = a;
+                var shopCategoryId = b;
+                //查大类
+                app.request({
+                    url: '/selectShopSmall',
+                    method: 'POST',
+                    async: false,
+                    data: {
+                        "parentCategoryId":parentCategoryId,
+                        "shopCategoryId":shopCategoryId
+                    },
+                    success:function (rs) {
+                        var rr = JSON.parse(rs);
+                        if (rr.code == '1') {
+                            var html="";
+//                            html+="<img style='width: 100px;height: 100px' src=\""+rr.data.profileImg+"\">"+"<br><br>用户名:&nbsp;&nbsp;"+rr.data.userName + "<br><br><br>";
+                            var len=rr.data.length;
+                            //凭借搜索出来的信息
+                            for (var i=0;i<len;i++){
+                                html+="<a href=\"/intoshop/?shopid="+rr.data[i].shopId+"\">"+
+                                    "<div class=\"card\" >\n" +
+                                    "<div class=\"card-header\">"+rr.data[i].shopName+"</div>\n" +
+                                    "<div class=\"card-content card-content-padding\">"+
+                                    "<div style='width: 70px;float: left;'>"+
+                                    "<img style='width: 70px;height: 70px' src=\""+rr.data[i].shopImg+"\">"+
+                                    "</div>"+
+                                    "<div style='width: 270px;float: left;margin-left: 17px'>"+
+                                    "<font style=\"font-size: 14px; \">"+rr.data[i].shopDesc+"</font>"+
+                                    "</div>"+
+                                    "</div>\n" +
+                                    "<div class=\"card-footer\" style='width: 100%'>" +
+                                    "<p class=\"color-gray\">"+rr.data[i].lastEditTime+"更新</p>\n" +
+                                    "<span><font color=\"#a9a9a9\">点击查看</font></span>\n" +
+                                    "</div>\n" +
+                                    "</div>"+
+                                    "</a>"
+                            }
+                            $("#searchlist").html(html);
+                        }
+                        else
+                        {
+                            var html = "<span><font color=\"#a9a9a9\">无相关信息</font></span>\n"
+                            $("#searchlist").html(html);
+                        }
+                    }
+                })
+            }
+        }
+    }
+</script>

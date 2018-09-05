@@ -1,0 +1,55 @@
+<template xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left" style="">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back" style=""></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title" th:text="${theproduct.data.productName}">店名</div>
+                <div class="right"></div>
+
+            </div>
+        </div>
+        <!--显示内容-->
+        <div class="page-content">
+            <div class="card" >
+                <div class="card-content card-content-padding">
+                    <img  width = "100%" height="100%" th:src="${theproduct.data.imgAddr}">
+                    <br>
+                    <br>
+                    <div class="item-inner">
+                        <span th:text="${theproduct.data.lastEditTime}"></span>
+                        <span style="float: right">购买可得xx积分</span>
+                    </div>
+                    <p style="font-size: 20px;color: #f21f0f">&yen;&nbsp;<span th:text="${theproduct.data.normalPrice}"></span></p>
+                    <p style="font-size: 15px"th:text="${theproduct.data.productDesc}"></p>
+                    <!--图片展示-->
+                    <div th:each="productImg : ${productImgs.data}">
+                        <img  width = "100%" height="100%" th:src="${productImg.imgAddr}">
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="toolbar  tabbar tabbar-labels">
+            <div class="toolbar-inner">
+                <a href="/index/" class="tab-link tab-link-active ">
+                    <i class="icon f7-icons ios-only">home_fill</i>
+                    <span class="tabbar-label">首页</span>
+                </a>
+                <a href="#tab-2" class="tab-link panel-open "  data-panel="right">
+                    <i class="icon f7-icons ios-only  icon-fill">person</i>
+                    <span class="tabbar-label">我</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</template>

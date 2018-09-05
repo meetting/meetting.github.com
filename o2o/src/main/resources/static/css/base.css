@@ -1,0 +1,192 @@
+body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, img {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    font-size: 16px;
+    font-family: "微软雅黑";
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/*定位居中*/
+.middle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+a {
+    color: #3e3e3e;
+    text-decoration: none;
+}
+
+input[type=text]{
+    height: 20px;
+    box-shadow:0px 0px 8px #707070;
+}
+
+input[type=button]{
+    height: 30px;
+    width: 60px;
+}
+input[type=submit]{
+    height: 30px;
+    width: 60px;
+}
+input[type=reset]{
+    height: 30px;
+    width: 60px;
+}
+
+img, input, button, textarea {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+
+ul {
+    list-style: none;
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: "SimSun", "宋体";
+}
+
+/*去掉行内替换元素空白缝隙*/
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+s, i, em, u {
+    font-style: normal;
+    text-decoration: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/*清除浮动*/
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+    /*IE/7/6*/
+}
+
+
+body{
+}
+.pagemain{
+    width: 79vw;
+    height: 80vh;
+    display:flex;
+    margin: 0 auto;
+    justify-content:center;
+    align-items:center;
+}
+.pageheader{
+
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/hdimage.jpg") ;
+    option:0.7;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    overflow: hidden;
+}
+.mainpage{
+    width: 100%;
+    height: 140vh;
+}
+#indexbg{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url("../images/indxbg.png");
+}
+
+.someinformation{
+    width: 80vw;
+    height: 90vh;
+    background-size:100%;
+    box-shadow: 2px 2px 5px #000000;
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left: -40vw;
+    margin-top: -45vh;
+}
+
+.footer{
+    width: 100%;
+    height: 100%;
+    background-color: #546065;
+    text-align:center ;
+    color: #f9f9f9
+}
+/* 宽一点 */
+.big1{
+    width: 70vw;
+    height: 60vh;
+}
+
+.big1 table{
+    width: 70vw;
+}
+
+/* 窄一点 */
+.big2{
+    width: 70vw;
+    height: 60vh;
+}
+.big2 table{
+    width: 60vw;
+}
+
+.tit{
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff4501;
+}
+
+th{
+    font-size: 20px;
+    height: 50px;
+}
+td{
+    height: 30px;
+}
+
+tr{
+    height: 30px;
+}

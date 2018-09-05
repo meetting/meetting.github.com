@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+    <meta charset="utf-8">
+    <title>菜单</title>
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/adapter.js"></script>
+    <link rel="stylesheet" href="../static/css/menu.css">
+    <link rel="stylesheet" href="../static/css/mystyle.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+
+</head>
+<body>
+<div id="menu">
+    <!--隐藏菜单-->
+    <div id="ensconce">
+        <h2>
+            <img src="images/show.png" alt="">
+            <br>
+            后台管理
+        </h2>
+    </div>
+
+    <!--显示菜单-->
+    <div id="open">
+        <div class="navH">
+            后&nbsp;台&nbsp;管&nbsp;理
+        </div>
+        <div class="navBox">
+            <ul>
+                <li>
+                    <h2 class="obtain">商铺管理<i></i></h2>
+                    <div class="secondary">
+                        <a target="mainFrame" href="shopmanagement.html"><h3>商铺管理</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <h2 class="obtain">头条管理<i></i></h2>
+                    <div class="secondary">
+                        <a target="mainFrame" href="#"><h3>头条管理</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <h2 class="obtain">类别管理<i></i></h2>
+                    <div class="secondary">
+                        <a target="mainFrame" href="#"><h3>类别管理</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <h2 class="obtain">区域管理<i></i></h2>
+                    <div class="secondary">
+                        <a target="mainFrame" href="#"><h3>区域管理</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <h2 class="obtain">账号管理<i></i></h2>
+                    <div class="secondary">
+                        <a target="mainFrame" href="#"><h3>账号管理</h3></a>
+                    </div>
+                </li>
+
+                <!--<li>-->
+                    <!--<a onclick="userexit()" ><h2 class="obtain">退出<i></i></h2></a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function userexit()
+    {
+        var uexit = confirm("是否确认退出？");
+        if(uexit == true)
+        {
+            //window.open('loginout','_top')
+        }
+        else
+        {
+        }
+    }
+</script>
+
+</body>
+</html>

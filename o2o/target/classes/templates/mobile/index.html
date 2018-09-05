@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>余老大部下APP</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="/css/framework7-icons.css">
+    <link rel="stylesheet" href="/css/myapp.css">
+    <script src="/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<!-- App root element -->
+<div id="app">
+    <!-- Statusbar overlay -->
+    <div class="statusbar"></div>
+
+    <!-- 关于我的右边侧边框 -->
+    <div class="panel panel-right panel-cover">
+        <div class="block" style="font-size: 20px;line-height: 20px">
+            <div style="height: 50px;">
+                <p><a href="#" class="panel-close" style="color: black"><i class="f7-icons">undo</i></a></p>
+            </div>
+            <div id="myinfo" style="text-align: center;height: 200px">
+                <!--<p style="color: #f21f0f">尚未登录，请先登录！</p>-->
+            </div>
+            <p><i class="f7-icons">person</i>&nbsp;&nbsp;&nbsp;&nbsp;我的信息</p>
+            <p><i class="f7-icons">money_yen</i>&nbsp;&nbsp;&nbsp;&nbsp;消费记录</p>
+            <hr>
+            <p>&nbsp;<a href="/login/" class="panel-close" id="log">登陆</a></p>
+            <p>&nbsp;<a href="/shopkeeperlogin/" class="panel-close" >我的店铺</a></p>
+            <!-- <p><a class="panel-open" href="#" data-panel="left">Open Left Panel</a></p> -->
+        </div>
+    </div>
+
+    <!-- 写的js会有app.views.create();将内容加进来-->
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Initial Page, "data-name" contains page name -->
+        <div data-name="home" class="page">
+
+            <!-- 头部 -->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="title">余老大部下店</div>
+                </div>
+            </div>
+
+            <!-- 中间部分 -->
+            <div class="page-content">
+                <!-- Slider container -->
+               <!--头部广告-->
+                <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="50" class="swiper-container swiper-init demo-swiper">
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="/image/item/headtitle/2017061320393452772.jpg" style="width: 100%;"></div>
+                        <div class="swiper-slide"><img src="/image/item/headtitle/2017061320400198256.jpg" style="width: 100%;"></div>
+                        <div class="swiper-slide"><img src="/image/item/headtitle/2017061320315746624.jpg" style="width: 100%;"></div>
+                        <div class="swiper-slide"><img src="/image/item/headtitle/2017061320371786788.jpg" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <br>
+                <div style="width: 150px; " >
+                        <hr size=35 width="4" color="#88A9F2"; style="display: inline-block">
+
+                    <div style="margin-top: -45px">
+                        <span style="font-size: 24px;color: #f25f16" >&nbsp;&nbsp;&nbsp;<b>全 部 类 别</b></span>
+                     </div>
+                </div>
+                <br>
+                <!-- 中间分类图标部分 -->
+                <div class="row no-gap">
+                    <!--二手市场 -->
+                    <div class="col-50">
+                        <a href="/SecondhandMarket/">
+                        <div class="cateImg">
+                            <img src="/image/item/shopcategory/2017061223272255687.png" style="width:50px;margin: 10px;"/>
+                        </div>
+                        <div class="cateText">
+                            <p style="font-size: 12px; color: black"><font style="font-size: 18px; ">二手市场</font><br>二手商品交易</p>
+                        </div>
+                        </a>
+                    </div>
+                    <!--美容美发 -->
+                    <div class="col-50">
+                        <a href="/cosmetology/">
+                        <div class="cateImg">
+                            <img src="/image/item/shopcategory/2017061223273314635.png" style="width:50px;margin: 10px;"/>
+                        </div>
+                        <div class="cateText">
+                            <p style="font-size: 12px;color: black"> <font style="font-size: 18px;">美容美发</font><br>美容美发</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row no-gap">
+                    <!--美食饮品 -->
+                    <div class="col-50">
+                        <a href="/foodordrink/">
+                        <div class="cateImg">
+                            <img src="/image/item/shopcategory/2017061223274213433.png" style="width:50px;margin: 10px;"/>
+                        </div>
+                        <div class="cateText">
+                            <p style="font-size: 12px;color: black"><font style="font-size: 18px; ">美食饮品</font><br>美食饮品</p>
+                        </div>
+                        </a>
+                    </div>
+                    <!-- 休闲娱乐 -->
+                    <div class="col-50">
+                        <a href="/fun/">
+                        <div class="cateImg">
+                            <img src="/image/item/shopcategory/2017061223275121460.png" style="width:50px;margin: 10px;"/>
+                        </div>
+                        <div class="cateText">
+                            <p style="font-size: 12px;color: black"> <font style="font-size: 18px;">休闲娱乐</font><br>休闲娱乐</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row no-gap">
+                    <!--培训教育 -->
+                    <div class="col-50">
+                        <a href="/edu/">
+                        <div class="cateImg">
+                            <img src="/image/item/shopcategory/2017061223280082147.png" style="width:50px;margin: 10px;"/>
+                        </div>
+                        <div class="cateText">
+                            <p style="font-size: 12px;color: black"><font style="font-size: 18px; ">培训教育</font><br>培训教育</p>
+                        </div>
+                        </a>
+                    </div>
+                    <!-- 租赁市场 -->
+                    <div class="col-50">
+                        <a href="/rentalmarket/">
+                        <div class="cateImg">
+                            <img src="/image/item/shopcategory/2017061223281361578.png" style="width:50px;margin: 10px;"/>
+                        </div>
+                        <div class="cateText">
+                            <p style="font-size: 12px;color: black"> <font style="font-size: 18px;">租赁市场</font><br>租赁市场</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- 页脚部分，首页、关于我 -->
+            <div class="toolbar  tabbar tabbar-labels">
+                <div class="toolbar-inner">
+                    <a href="#tab-1" class="tab-link tab-link-active">
+                        <i class="icon f7-icons ios-only">home_fill</i>
+                        <span class="tabbar-label">首页</span>
+                    </a>
+                    <a href="#tab-2" class="tab-link panel-open"  data-panel="right">
+                        <!--可以在span中加入提示的消息数-->
+                        <!--<i class="icon f7-icons ios-only  icon-fill">person<span class="badge color-red">27</span></i>-->
+                        <i class="icon f7-icons ios-only  icon-fill">person</i>
+                        <span class="tabbar-label">我</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Path to Framework7 Library JS-->
+<script type="text/javascript" src="/js/framework7.min.js"></script>
+<!-- Path to your app js-->
+<script type="text/javascript" src="/pagejs/myapp.js"></script>
+
+<script>
+//    window.setInterval(function(){
+//        location.reload();
+//    },5000)
+</script>
+</body>
+</html>

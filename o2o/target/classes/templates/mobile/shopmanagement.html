@@ -1,0 +1,39 @@
+<!--二手市场-->
+<template xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left" style="">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back" style=""></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title" >商 店 管 理</div>
+
+            </div>
+        </div>
+        <div class="page-content">
+
+            <table width="100%">
+                <tr >
+                    <td style="padding: 30px 10px 10px 15px">
+                        <a th:href="@{/shopinfo/(shopId=${shopId})}">
+                        <button class="col button button-fill color-orange" style="height: 50px;font-size: 20px">店铺信息</button>
+                        </a>
+                    </td>
+                    <td style="padding: 30px 15px 10px 10px">
+                        <button class="col button button-fill color-orange" style="height: 50px;font-size: 20px">商品管理</button>
+                    </td>
+                </tr>
+                <tr >
+                    <td style="padding: 10px 10px 10px 15px">
+                        <button class="col button button-fill color-orange" style="height: 50px;font-size: 20px">类别管理</button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+</template>

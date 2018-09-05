@@ -1,0 +1,108 @@
+<template xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="page ">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left" style="">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back" ></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title" >店 铺 注 册</div>
+
+            </div>
+        </div>
+        <div class="page-content register-screen-content">
+            <div class="list inline-labels no-hairlines-md" >
+                <ul style="padding: 20px;">
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">商铺名称</div>
+                            <div class="item-input-wrap">
+                                <input type="text" id="shopName" placeholder="商铺名称">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">商铺分类</div>
+                            <div class="item-input-wrap">
+                                <select>
+                                    <option value="0" selected > <span style="color: #e86046">请选择商铺类别</span></option>
+                                    <option th:each="shopCategory : ${shopCategories}"
+                                            th:value="${shopCategory.shopCategoryId}" th:text="${shopCategory.shopCategoryName}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">所属区域</div>
+                            <div class="item-input-wrap">
+                                <!--<input type="text" placeholder="所属区域">-->
+                                <select>
+                                    <option value="0" selected> 请选择所属区域</option>
+                                    <option th:each="area : ${areas}"
+                                            th:value="${area.areaId}" th:text="${area.areaName}"></option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">详细地址</div>
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="详细地址">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">联系电话</div>
+                            <div class="item-input-wrap">
+                                <input type="text"  placeholder="联系电话">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">缩略图</div>
+                            <div class="item-input-wrap">
+                                 <!--设置可以添加图片类型的文件-->
+                                <input id="fileId1" type="file" accept="image/png,image/gif" name="file" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">店铺简介</div>
+                            <div class="item-input-wrap">
+                                <textarea placeholder="暂无介绍"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">验证码</div>
+                            <div class="item-input-wrap">
+                                <input type="text" size="5"  name="validcode" placeholder="验证码">
+                                <span class="input-clear-button"></span>
+                            </div>
+                            <div class="item-input-wrap">
+                                <img style="float: right" src="/mobile/defaultKaptcha"
+                                     onclick = "this.src='/mobile/defaultKaptcha?d='+new Date()*1"/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <br>
+                    <button class="col button button-fill color-orange" style="height: 50px;font-size: 20px">提 交 申 请</button>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

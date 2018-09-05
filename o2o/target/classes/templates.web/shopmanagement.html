@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>店铺管理</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="/js/plugins/bootstapdatatable/bootstrap-table.css"/>
+
+
+
+</head>
+<body >
+<div class="container">
+
+    <h1>店铺列表
+        <!--<button class="btn btn-success pull-right" onclick="addShop();">新增店铺</button>-->
+        <!--<button class="btn btn-error pull-right" onclick="deleteShop();">删除店铺</button>-->
+    </h1>
+
+    <table class="table" id="tbShop">
+
+    </table>
+
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="dlgShop">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">店铺信息信息</h4>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <input type="hidden" id="id" name="id" />
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="姓名"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password"  name="pasword" placeholder="密码" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ip">IP</label>
+                        <input type="text" class="form-control" id="ip"  name="ip" placeholder="IP" />
+                    </div>
+                    <div class="form-group">
+                        <label for="ip">时间</label>
+                        <input type="text" class="form-control" id="loginTime"  name="loginTime" placeholder="请输入时间" />
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="saveStudent();">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<script src="/js/bootstrap.js"></script>
+<script src="/js/plugins/bootstapdatatable/bootstrap-table.js"></script>
+<script src="/js/plugins/bootstapdatatable/bootstrap-table-zh-CN.js"></script>
+
+<script src="../static/pagejs/shopjs.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<template>
+    <div class="page no-toolbar no-navbar no-swipeback">
+        <div class="page-content login-screen-content">
+            <div class="login-screen-title">Meeting Shop</div>
+            <form >
+                <div class="list">
+                    <ul>
+                        <li class="item-content item-input item-input-with-value">
+                            <div class="item-inner">
+                                <div class="item-title item-label">账 号</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="Your username" id="demo-username-2" name="username"
+                                           class="input-with-value">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">密 码</div>
+                                <div class="item-input-wrap">
+                                    <input type="password" placeholder="Your password" id="demo-password-2" name="password" class="">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <ul>
+                        <li><button class="col button button-fill color-orange " style="height: 44px;">
+                            <a href="#" class="item-link list-button "  @click="signIn"><font style="color:white;font-size: 22px" >登&nbsp;&nbsp;&nbsp;&nbsp;录</font></a></button></li>
+                        <!--<li><a href="#" class="item-link list-button" @click="signIn">登 录</a></li>-->
+                    </ul>
+
+
+                    <div class="block-footer">
+
+                        <!--<a href="/register/" class="panel-close" style="color: #DE3E35;font-size: 23px"><u>注册一个店铺？</u></a>-->
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        有事请@余老大<hr style="width:60%">联系方式我就不给了，自己想办法
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+<!-- Path to your Jquery js-->
+<script>
+        return {
+            methods: {
+                signIn: function () {
+                    var $ = this.$;
+                    var app = this.$app;
+                    var router = this.$router;
+                    var username = $('input#demo-username-2').val();
+                    var password = $('input#demo-password-2').val();
+
+                    var app = new Framework7();
+                    var $$ = Dom7;
+
+                    //进行登录验证
+                    app.request({
+                        url: '/userlogin',
+                        method: 'POST',
+                        async: false,
+                        data: {
+                            "username":username,
+                            "password":password
+                        },
+                        success:function (rs) {
+                            var rr = JSON.parse(rs);
+                           //alert(rr.msg);
+
+                            if (rr.code == '1') {
+                                var html="";
+                                html+="<img style='width: 100px;height: 100px' src=\""+rr.data.profileImg+"\">"+"<br><br>用户名:&nbsp;&nbsp;"+rr.data.userName + "<br><br><br>";
+                                 $("#myinfo").html(html);
+                                var log="注销";
+                                $("#log").html(log);
+                                app.dialog.preloader( "Login...",function () {
+                                })
+                                setTimeout(function () {
+                                    app.dialog.close();
+                                }, 1000);
+                                app.dialog.preloader( "登录成功",function () {
+                                })
+                                setTimeout(function () {
+                                    app.dialog.close();
+//                                    mainView.router.refreshPreviousPage();
+                                    //路由跳转
+                                    mainView.router.load({  //加载单独页面page
+                                        url: '/mobile/index',//页面的url
+                                    });
+//                                    mainView.router.loadPage( '/mobile/index');
+                                }, 2000);
+
+                            }
+                            else
+                            {
+                                var log="登陆";
+                                $("#log").html(log);
+                                app.dialog.preloader( "Login...",function () {
+                                })
+                                setTimeout(function () {
+                                    app.dialog.close();
+                                }, 2000);
+                                app.dialog.alert("<br>提示：" + rr.msg + "<br><br>亲，请尝试重新登录！<br><br>", "登录失败",function () {
+
+                                    app.loginScreen.close();
+
+                                })
+                            }
+                        }
+                    })
+
+                }
+            }
+        }
+</script>

@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/o2odb
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+    properties:
+        hibernate:
+            dialect : org.hibernate.dialect.MySQL5Dialect
+
+  thymeleaf:
+    mode: HTML5
+logging:
+  pattern:
+    console: "%d - %msg%n"
+  file: c:/log/o2o.log

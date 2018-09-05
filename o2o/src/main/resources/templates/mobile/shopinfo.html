@@ -1,0 +1,106 @@
+<template xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="page ">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left" style="">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back" style=""></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title" >店 铺 信 息</div>
+
+            </div>
+        </div>
+        <div class="page-content register-screen-content">
+            <div class="list inline-labels no-hairlines-md" >
+                <ul style="padding: 20px;">
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">商铺名称</div>
+                            <div class="item-input-wrap">
+                                <input type="text" id="shopName" placeholder="商铺名称"
+                                       th:attr="value=${shopinfo.data.shopName}">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">商铺分类</div>
+                            <div class="item-input-wrap">
+                                <input type="text"  placeholder="商铺分类"
+                                       th:attr="value=${shopCategoryinfo.shopCategoryName}">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">所属区域</div>
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="所属区域"
+                                       th:attr="value=${areainfo.areaName}">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">详细地址</div>
+                            <div class="item-input-wrap">
+                                <input type="text" placeholder="详细地址"
+                                       th:attr="value=${shopinfo.data.shopAddr}">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">联系电话</div>
+                            <div class="item-input-wrap">
+                                <input type="text"  placeholder="联系电话"
+                                       th:attr="value=${shopinfo.data.phone}">
+                                <span class="input-clear-button"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">缩略图</div>
+                            <div class="item-input-wrap">
+                                <img style="width: 70px;height: 70px" th:src="${shopinfo.data.shopImg}">
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">店铺简介</div>
+                            <div class="item-input-wrap">
+                                <textarea placeholder="暂无介绍"
+                                          th:field = "${shopinfo.data.shopDesc}"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content item-input">
+                        <div class="item-inner">
+                            <div class="item-title item-label">验证码</div>
+                            <div class="item-input-wrap">
+                                <input type="text" size="5"  name="validcode" placeholder="验证码">
+                                <span class="input-clear-button"></span>
+                            </div>
+                            <div class="item-input-wrap">
+                                <img style="float: right" src="/mobile/defaultKaptcha"
+                                     onclick = "this.src='/mobile/defaultKaptcha?d='+new Date()*1"/>
+                            </div>
+                        </div>
+                    </li>
+                    <br>
+                    <br>
+                    <button class="col button button-fill color-orange" style="height: 50px;font-size: 20px">保 存 修 改</button>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>
