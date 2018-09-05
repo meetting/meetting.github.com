@@ -1,0 +1,85 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风尚物流</title>
+   	<link rel="stylesheet" type="text/css" href="${css}/style.css" />
+    <link rel="stylesheet" href="${css}/base.css"> <!--初始化文件-->
+
+</head>
+<body>
+    <div class="someinformation">
+        <div class="pagemain">
+            <div class="big2">
+
+            <p class="tit">配送点&nbsp/&nbsp配送点信息修改</p>
+                <hr>
+                <form action="#" method="post">
+                    <table>
+                        <tr>
+                            <td style="width: 60%;text-align: center">
+                                配送点名称
+                            </td>
+                            <td style="width: 40%">
+                                <input type="text" name="" value="广州">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40%;text-align: center">
+                                配送点邮编
+                            </td>
+                            <td style="width: 60%">
+                                <input type="text" name=""value=" 510640">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40%;text-align: center">
+                                配送点管理员
+                            </td>
+                            <td style="width: 60%">
+                                <input type="text" name=""value="小李子">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40%;text-align: center">
+                                配送点地址
+                            </td>
+                            <td style="width: 60%">
+                                <input type="text" name=""value="五山">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40%;text-align: center">
+                                配送点电话
+                            </td>
+                            <td style="width: 60%">
+                                <input type="text" name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40%;text-align: center">
+                                配送点收入
+                            </td>
+                            <td style="width: 60%">
+                                <input type="text" name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 40%">
+                            </td>
+                            <td style="width: 60%;float: right">
+                                <input type="submit" value="修改记录">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

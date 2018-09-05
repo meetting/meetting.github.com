@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.JoinDao">
+  <!-- <resultMap id="BaseResultMap" type="com.teamtwo.pojo.Road" >
+    <result column="roadid" property="roadid" jdbcType="INTEGER" />
+    <result column="startpointid" property="startpointid" jdbcType="INTEGER" />
+    <result column="endpointid" property="endpointid" jdbcType="INTEGER" />
+    <result column="roadlength" property="roadlength" jdbcType="FLOAT" />
+    <result column="roadvalue" property="roadvalue" jdbcType="FLOAT" />
+  </resultMap> 
+  
+   参数是class实体对象,其中staff在数据库中只需要staffname 
+    <select id="getRoad" resultMap="BaseResultMap">
+      select 
+      *
+      from class
+    </select>  
+    
+    <select id="getRoadById" resultMap="BaseResultMap">
+      select 
+      *
+      from class where roadid=#{id}
+    </select>  -->
+    
+    <insert id="insertJoin">
+    	INSERT INTO
+    	tbjoin(sendpointid,recvpointid,jointime,automobileid)
+    	VALUES
+    		((select pointid from point where pointaddr=#{sendpointname,jdbcType=VARCHAR}),
+    		(select pointid from point where pointaddr=#{recvpointname,jdbcType=VARCHAR}),
+    		#{jointime,jdbcType=DATE},#{automobileid,jdbcType=INTEGER})
+    </insert>
+    
+    <!-- <update id="updateClass" parameterType="com.teamtwo.pojo.Class" >
+    update class
+    set roadid = #{roadid,jdbcType=INTEGER}, automobileid = #{automobileid,jdbcType=INTEGER},
+    driverid = #{driverid,jdbcType=INTEGER},startpointid = #{startpointid,jdbcType=INTEGER},
+    endpointid = #{endpointid,jdbcType=INTEGER},weight = #{weight,jdbcType=FLOAT},
+    classendtime = #{classendtime,jdbcType=DATE}
+    where classid = #{classid,jdbcType=INTEGER}
+   </update> -->
+    
+</mapper>

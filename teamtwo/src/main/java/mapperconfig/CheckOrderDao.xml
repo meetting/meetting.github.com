@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.CheckOrderDao">
+  
+    <!-- 参数是class实体对象,其中staff在数据库中只需要staffname --> 
+    <select id="queryCheckOrderInfo" resultType="java.util.HashMap">
+      select u.orderid,u.customid,u.startaddr,u.sendtime,u.sendname,u.sendphone,u.endaddr,u.recvname,u.recvphone,CONCAT(v.pointname,":",v.pointaddr) pointname,u.weight,u.volume,u.cost,u.statev,u.describeo 
+      from torder u,point v
+      where u.startpointid=v.pointid
+    </select>
+    
+    <!-- <select id="queryChargeInfo" resultType="java.util.HashMap">
+     select * from charge where startpoint=#{startpointid,jdbcType=INTEGER} and endpotint=#{endpointid,jdbcType=INTEGER}
+    </select>
+    
+    <select id="modifyBookingInfo" resultType="java.util.HashMap">
+     select * from torder where orderid=#{orderid,jdbcType=INTEGER}
+    </select>
+    
+    <insert id="addBookingInfo">
+    INSERT INTO
+    	torder(customid,startaddr,sendtime,sendname,sendphone,endaddr,recvname,recvphone,startpointid,
+    	endpointid,weight,volume,cost,statev,describeo)
+    	VALUES
+    		(#{customid,jdbcType=INTEGER},#{startaddr,jdbcType=VARCHAR},#{sendtime,jdbcType=DATE},
+    		#{sendname,jdbcType=VARCHAR},#{sendphone,jdbcType=VARCHAR},#{endaddr,jdbcType=VARCHAR},
+    		#{recvname,jdbcType=VARCHAR},#{recvphone,jdbcType=VARCHAR},#{startpointid,jdbcType=INTEGER},
+    		#{endpointid,jdbcType=INTEGER},#{weight,jdbcType=DOUBLE},#{volume,jdbcType=DOUBLE},
+    		#{cost,jdbcType=DOUBLE},#{statev,jdbcType=VARCHAR},#{describeo,jdbcType=VARCHAR}) 
+    	INSERT INTO
+    	torder(customid,startaddr,sendtime,sendname,sendphone,endaddr,recvname,recvphone,startpointid,
+    	endpointid,weight)
+    	VALUES
+    		(#{customid,jdbcType=INTEGER},#{startaddr,jdbcType=VARCHAR},#{sendtime,jdbcType=DATE},
+    		#{sendname,jdbcType=VARCHAR},#{sendphone,jdbcType=VARCHAR},#{endaddr,jdbcType=VARCHAR},
+    		#{recvname,jdbcType=VARCHAR})
+    </insert> -->
+    
+    <update id="modifyCheckOrderInfoToPass">
+    update torder
+    set statev="通过"
+    where orderid = #{orderid,jdbcType=INTEGER}
+   </update>  
+   
+   <update id="modifyCheckOrderInfoToNopass">
+    update torder
+    set statev="否决"
+    where orderid = #{orderid,jdbcType=INTEGER}
+   </update>  
+    
+</mapper>

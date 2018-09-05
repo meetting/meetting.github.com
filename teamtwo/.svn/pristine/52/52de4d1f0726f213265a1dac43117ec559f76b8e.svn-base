@@ -1,0 +1,78 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风尚物流</title>
+
+    <link rel="stylesheet" type="text/css" href="${css}/style.css" />
+    <link rel="stylesheet" href="${css}/base.css"> <!--初始化文件-->
+
+
+</head>
+<body>
+
+    <div class="someinformation">
+        <div class="pagemain">
+            <div class="big1">
+                <p class="tit">报表&nbsp/&nbsp图形显示</p>
+                <hr>
+                <form action="#" method="post">
+                    <table style="text-align: center">
+                        <tr>
+                            <th style="width: 10%">
+                                配送点
+                            </th>
+                            <th style="width: 15%">
+                                配送货物总质量（KG)
+                            </th>
+                            <th style="width: 15%">
+                                总体积（CM<sup>3</sup>）
+                            </th>
+                            <th style="width: 12%">
+                                收入
+                            </th>
+                            <th style="width: 13%">
+                                报表时间
+                            </th>
+                            <th style="width: 20%">
+                                报表生成时间
+                            </th>
+
+                        </tr>
+
+                        <tr>
+                            <td >
+                                天津
+                            </td>
+                            <td>
+                                14
+                            </td>
+                            <td >
+                                53
+                            </td>
+                            <td>
+                                100
+                            </td>
+                            <td >
+                                2005-4-6
+                            </td>
+                            <td>
+                                2005-7-9
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <b>图像显示：</b>
+                    <br>
+                    <br>
+                    <br><hr>
+                    <input style="float: right" type="button"  value="导出Excel">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.RoadDao">
+  <resultMap id="BaseResultMap" type="com.teamtwo.pojo.Road" >
+    <result column="roadid" property="roadid" jdbcType="INTEGER" />
+    <result column="startpointid" property="startpointid" jdbcType="INTEGER" />
+    <result column="endpointid" property="endpointid" jdbcType="INTEGER" />
+    <result column="roadlength" property="roadlength" jdbcType="FLOAT" />
+    <result column="roadvalue" property="roadvalue" jdbcType="FLOAT" />
+  </resultMap> 
+ 
+   <!-- 参数是class实体对象,其中staff在数据库中只需要staffname --> 
+    <select id="getRoad" resultMap="BaseResultMap">
+      select 
+      *
+      from road
+    </select>  
+    
+    <select id="getRoadById" resultMap="BaseResultMap">
+      select 
+      *
+      from road where roadid=#{id}
+    </select> 
+    
+    <select id="seekRoadById" resultType="java.util.HashMap">
+     select u.roadid,v.pointname startpointname,z.pointname endpointname,u.roadlength
+     from road u,point v,point z
+     where u.startpointid=v.pointid and u.endpointid=z.pointid and u.roadid=#{roadid,jdbcType=INTEGER}
+    </select> 
+    
+    <select id="seekRoadByStartPoint" resultType="java.util.HashMap">
+     select u.roadid,v.pointname startpointname,z.pointname endpointname,u.roadlength
+     from road u,point v,point z
+     where u.startpointid=v.pointid and u.endpointid=z.pointid and v.pointname=#{startpointname,jdbcType=VARCHAR}
+    </select> 
+    
+    <select id="seekRoadByEndPoint" resultType="java.util.HashMap">
+     select u.roadid,v.pointname startpointname,z.pointname endpointname,u.roadlength
+     from road u,point v,point z
+     where u.startpointid=v.pointid and u.endpointid=z.pointid and z.pointname=#{endpointname,jdbcType=VARCHAR}
+    </select> 
+    
+    <select id="seekRoadByRoadLength" resultType="java.util.HashMap">
+     select u.roadid,v.pointname startpointname,z.pointname endpointname,u.roadlength
+     from road u,point v,point z
+     where u.startpointid=v.pointid and u.endpointid=z.pointid and u.roadlength=#{roadlength,jdbcType=FLOAT}
+    </select> 
+    
+    <insert id="addRoad" parameterType="com.teamtwo.pojo.Road">
+    	INSERT INTO
+    	road(roadid,startpointid,endpointid,roadlength,roadvalue)
+    	VALUES
+    		(#{roadid},#{startpointid},#{endpointid},#{roadlength},#{roadvalue})
+    </insert>
+    
+    <update id="modifyRoad" parameterType="com.teamtwo.pojo.Road" >
+    update road
+    set startpointid = #{startpointid,jdbcType=INTEGER},
+    endpointid = #{endpointid,jdbcType=INTEGER},roadlength=#{roadlength,jdbcType=FLOAT}
+    where roadid = #{roadid,jdbcType=INTEGER}
+   </update>
+  
+</mapper>

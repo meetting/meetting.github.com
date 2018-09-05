@@ -1,0 +1,10 @@
+package com.teamtwo.mapper;
+
+import java.util.Date;
+
+import org.apache.ibatis.annotations.Param;
+
+public interface JoinDao {
+
+	public void insertJoin(@Param("sendpointname")String sendpointname,@Param("recvpointname")String recvpointname,@Param("jointime")Date jointime,@Param("automobileid")Integer automobileid);
+}

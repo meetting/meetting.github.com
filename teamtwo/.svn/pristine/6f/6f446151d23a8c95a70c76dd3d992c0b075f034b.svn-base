@@ -1,0 +1,25 @@
+package com.teamtwo.mapper;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.teamtwo.BaseTest;
+import com.teamtwo.mapper.PointDao;
+import com.teamtwo.pojo.Point;
+
+import static org.junit.Assert.assertEquals;
+
+public class PointDaoTest extends BaseTest {
+
+	 @Autowired
+	private PointDao pointDao;
+	
+	@Test
+	public void testQueryPoint(){
+		List<Point> pointList = pointDao.queryPoint();
+		assertEquals(1,pointList.size());
+		assertEquals("π„÷›",pointList.get(0).getPointname());
+	}
+}

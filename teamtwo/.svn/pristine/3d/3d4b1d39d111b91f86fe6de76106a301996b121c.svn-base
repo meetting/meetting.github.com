@@ -1,0 +1,11 @@
+package com.teamtwo.mapper;
+
+import java.util.Map;
+
+import com.teamtwo.pojo.Tuser;
+
+public interface TuserMapper {
+
+	Map<String, String> selectByUsernameAndPassword(Tuser tuser);	
+
+}

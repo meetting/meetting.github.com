@@ -1,0 +1,79 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风尚物流</title>
+
+<link rel="stylesheet" type="text/css" href="${css}/style.css" />
+    <link rel="stylesheet" href="${css}/base.css"> <!--初始化文件-->
+
+</head>
+<body>
+
+    <div class="someinformation">
+        <div class="pagemain">
+            <div class="big1">
+                <p class="tit">用户&nbsp/&nbsp查看用户</p>
+                <hr>
+                <form action="#" method="post">
+                    <table style="text-align: center">
+                        <tr>
+                            <th style="width: 15%">
+                                用户编号
+                            </th>
+                            <th style="width: 10%">
+                                用户名
+                            </th>
+                            <th style="width: 10%">
+                                密码
+                            </th>
+                            <th style="width: 15%">
+                                真实姓名
+                            </th>
+                            <th style="width: 15%">
+                                电话号码
+                            </th>
+                            <th style="width: 13%">
+                                地址
+                            </th>
+                            <th style="width: 22%">
+                                操作
+                            </th>
+
+                        </tr>
+
+                        <tr>
+                            <td >
+                                1
+                            </td>
+                            <td >
+                                xu
+                            </td>
+                            <td>
+                                abc
+                            </td>
+                            <td >
+                                徐某某
+                            </td>
+                            <td>
+                                12345678912
+                            </td>
+                            <td >
+                                重庆南岸区
+                            </td>
+                            <td >
+                                <input type="button"value="修改" onclick="location='../order/order_modify.html'">
+                                <input type="button"value="删除">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

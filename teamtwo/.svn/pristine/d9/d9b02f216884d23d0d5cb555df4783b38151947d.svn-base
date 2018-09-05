@@ -1,0 +1,118 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风尚物流</title>
+	<link rel="stylesheet" type="text/css" href="${css}/style.css" />
+    <link rel="stylesheet" href="${css}/base.css"> <!--初始化文件-->
+
+</head>
+<body>
+    <div class="someinformation">
+        <div class="pagemain">
+            <div class="big2">
+                <p class="tit">审核&nbsp/&nbsp车辆_路线</p>
+                <hr>
+                <form action="#" method="post">
+                    <table >
+                        <tr>
+                            <td style="width: 60%;text-align: center">
+                                发货配送点
+                            </td>
+                            <td style="width: 40%">
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                收货配送点
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                首公斤
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                首公斤价格
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                次公斤
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                次公斤价格
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                首立方
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                首立方价格
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style="text-align: center">
+                                次立方
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                次立方价格
+                            </td>
+                            <td >
+                                <input type="text" name="" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td style="float: right">
+                                <input type="button"value="通过">
+                                <input type="button"value="不通过">
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </form>
+            </div>
+        </div>
+</div>
+</body>
+</html>

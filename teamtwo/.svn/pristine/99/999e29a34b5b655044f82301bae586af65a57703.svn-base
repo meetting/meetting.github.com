@@ -1,0 +1,10 @@
+package com.teamtwo.service;
+
+import com.teamtwo.pojo.Automobile;
+
+public interface AutoMobileService {
+
+	public void addAutomobile(Automobile automobile);
+	
+	public void modifyAutomobile(Automobile automobile);
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.AutoMobileDao">
+   <resultMap id="BaseResultMap" type="com.teamtwo.pojo.Automobile" >
+    <result column="automobileid" property="automobileid" jdbcType="INTEGER" />
+    <result column="cartweight" property="cartweight" jdbcType="VARCHAR" />
+    <result column="carvolume" property="carvolume" jdbcType="VARCHAR" />
+    <result column="cartate" property="cartate" jdbcType="VARCHAR"/>
+    <result column="pointid" property="pointid" jdbcType="INTEGER" />
+  </resultMap>
+  
+    <select id="queryMobile" resultMap="BaseResultMap">
+      select 
+      *
+      from automobile
+    </select>  
+    
+    <select id="queryMobileById" resultMap="BaseResultMap">
+      select 
+      *
+      from automobile
+      where automobileid=#{automobileid,jdbcType=INTEGER}
+    </select>
+    
+    <insert id="addMobile" parameterType="com.teamtwo.pojo.Automobile">
+    	INSERT INTO
+    	automobile(automobileid,cartweight,carvolume,cartate,pointid)
+    	VALUES
+    		(#{automobileid},#{cartweight},#{carvolume},#{cartate},#{pointid})
+    </insert>
+    
+    <update id="modifyMobile" parameterType="com.teamtwo.pojo.Automobile" >
+    update automobile
+    set cartweight = #{cartweight,jdbcType=VARCHAR}, carvolume = #{carvolume,jdbcType=VARCHAR},
+    cartate = #{cartate,jdbcType=VARCHAR},pointid = #{pointid,jdbcType=INTEGER}
+    where automobileid = #{automobileid,jdbcType=INTEGER}
+   </update> 
+    
+</mapper>

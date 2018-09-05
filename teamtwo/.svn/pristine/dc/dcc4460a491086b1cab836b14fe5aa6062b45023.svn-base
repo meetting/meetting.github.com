@@ -1,0 +1,24 @@
+package com.teamtwo.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.teamtwo.mapper.ChargeDao;
+import com.teamtwo.pojo.Charge;
+import com.teamtwo.service.ChargeService;
+
+@Service
+public class ChargeServiceImpl implements ChargeService {
+
+	@Autowired
+	private ChargeDao chargeDao;
+
+	@Override
+	public List<Charge> queryChargeList() {
+		return chargeDao.queryChargeList();
+	}
+	
+	
+}

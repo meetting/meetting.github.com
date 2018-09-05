@@ -1,0 +1,25 @@
+package com.teamtwo.service.impl;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.teamtwo.mapper.TuserMapper;
+import com.teamtwo.pojo.Tuser;
+import com.teamtwo.service.TuserService;
+
+@Service
+public class TuserServiceImpl implements TuserService {
+
+	@Autowired
+	TuserMapper tuserMapper;
+	
+	@Override
+	public Map<String, String> checkTuser(Tuser tuser) {
+		
+		
+		return tuserMapper.selectByUsernameAndPassword(tuser);
+	}
+
+}

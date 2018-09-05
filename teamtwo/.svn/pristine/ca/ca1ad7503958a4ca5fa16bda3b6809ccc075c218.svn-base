@@ -1,0 +1,77 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风尚物流</title>
+	<link rel="stylesheet" type="text/css" href="${css}/style.css" />
+    <link rel="stylesheet" href="${css}/base.css"> <!--初始化文件-->
+</head>
+<body>
+    <div class="someinformation">
+        <div class="pagemain">
+            <div class="big1">
+                <p class="tit">审核&nbsp/&nbsp订单</p>
+                <hr>
+                <form action="#" method="post">
+                    <table style="text-align: center">
+                        <tr>
+                            <th style="width: 15%">
+                                订单编号
+                            </th>
+                            <th style="width: 10%">
+                                收件人
+                            </th>
+                            <th style="width: 10%">
+                                发件人
+                            </th>
+                            <th style="width: 15%">
+                                收件地
+                            </th>
+                            <th style="width: 15%">
+                                收件地
+                            </th>
+                            <th style="width: 13%">
+                                订单状态
+                            </th>
+                            <th style="width: 22%">
+                                修改
+                            </th>
+
+                        </tr>
+
+                        <tr>
+                            <td >
+                                GZ1010
+                            </td>
+                            <td >
+                                徐某某
+                            </td>
+                            <td>
+                                黄某某
+                            </td>
+                            <td >
+                                北京
+                            </td>
+                            <td>
+                                广州
+                            </td>
+                            <td >
+                                审批中
+                            </td>
+                            <td >
+                                <input type="button"value="修改" onclick="location='../order/order_modify.html'">
+                                <input type="button"value="删除">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

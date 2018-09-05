@@ -1,0 +1,56 @@
+package com.teamtwo.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.teamtwo.pojo.Road;
+import com.teamtwo.service.RoadService;
+
+/**
+ * 路线信息管理
+ * @author stars_admin
+ *
+ */
+@Controller
+public class RoadController {
+
+	@Autowired
+	public RoadService roadservice;
+	
+	/**
+	 * 增加路线信息
+	 * @param road
+	 * @return String
+	 */
+	@RequestMapping(value="/transportcapacity_add_line")
+	public String addRoad(Road road){
+		roadservice.addRoad(road);
+		return "transportcapacity_find_line";
+	}
+	
+	/**
+	 * 查看路线信息
+	 * @param road
+	 * @return void
+	 */
+	@RequestMapping(value="/transportcapacity_find_line")
+	public List<Road> queryRoad(){
+		
+		return roadservice.queryRoad();
+	}
+	
+	/**
+	 * 通过id寻找路线信息
+	 * @param road
+	 * @return void
+	 */
+	@RequestMapping(value="/transportcapacity_seek_line")
+	public List<Road> seekRoad(Integer id){
+		return roadservice.seekRoadById(id);
+	}
+}

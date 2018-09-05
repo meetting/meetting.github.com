@@ -1,0 +1,24 @@
+package com.teamtwo.service;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.teamtwo.BaseTest;
+import com.teamtwo.pojo.Point;
+
+public class PointServiceTest extends BaseTest {
+	@Autowired
+	private PointService pointService;
+	
+	@Test
+	public void testGetPointList(){
+		 List<Point> areaPoint = pointService.getPointList();
+		 assertEquals("π„÷›",areaPoint.get(0).getPointname());
+	}
+	
+	
+
+}

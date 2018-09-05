@@ -1,0 +1,53 @@
+package com.teamtwo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.teamtwo.service.ClassService;
+
+//ctrl+shift+o鑷姩瀵煎寘
+//运力增加、列出、修改
+@Controller
+public class ClassController {
+	
+	@Autowired
+	private ClassService classService;
+	
+	/**
+	 * 增加运力
+	 * @param Class
+	 * @return String
+	 */
+	@RequestMapping(value="/addtransportcapacity")
+	public String addClass(com.teamtwo.pojo.Class lclass){
+		classService.addClass(lclass);
+		return "transportcapacity_list";
+	}
+	
+	
+	/**
+	 * 查询运力
+	 * @param Class
+	 * @return String
+	 */
+	@RequestMapping(value="/querytransportcapacity")
+	public List<com.teamtwo.pojo.Class> queryClass(){
+		
+		return classService.queryClass();
+	}
+	
+	/**
+	 * 修改运力
+	 * @param Class
+	 * @return String
+	 */
+	@RequestMapping(value="/modifytransportcapacity")
+	public String updateClass(com.teamtwo.pojo.Class lclass)
+	{
+		classService.updateClass(lclass);
+		return "transportcapacity_list_modify";
+	}
+}

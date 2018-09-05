@@ -1,0 +1,14 @@
+package com.teamtwo.mapper;
+
+import java.util.List;
+
+import com.teamtwo.pojo.Road;
+
+public interface RoadDao {
+
+	public void addRoad(Road road);
+	
+	public List<Road> getRoad();
+	
+	public List<Road> getRoadById(Integer id);
+}

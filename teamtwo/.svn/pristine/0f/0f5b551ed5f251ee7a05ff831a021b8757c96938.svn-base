@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.PointDao">
+<!-- id对应方法的名称 -->
+    <select id="queryPoint" resultType="com.teamtwo.pojo.Point">
+        SELECT
+            pointid,
+            pointname,
+            pointstamp,
+            pointaddr,
+            pointphone,
+            icome,
+            staffname
+        FROM point
+    </select>
+    
+   <!-- 参数是point实体对象,其中staff在数据库中只需要staffname --> 
+    <insert id="insertPoint" useGeneratedKeys="true" keyColumn="pointid" keyProperty="pointid">
+    	INSERT INTO
+    	point(pointname,pointstamp,pointaddr,pointphone,icome,staffname)
+    	VALUES
+    		(#{pointname},#{pointstamp},#{pointaddr},#{pointphone},#{icome},#{staff.staffname})
+    </insert>
+    
+    <update id="updatePoint" parameterType="com.teamtwo.pojo.Point">
+    
+    </update>
+</mapper>

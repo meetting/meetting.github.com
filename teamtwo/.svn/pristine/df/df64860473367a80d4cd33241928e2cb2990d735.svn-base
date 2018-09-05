@@ -1,0 +1,26 @@
+package com.teamtwo.mapper;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.teamtwo.pojo.Charge;
+
+public class ChargeDaoTest {
+
+	 @Autowired
+	 private ChargeDao chargeDao;
+	 
+	 @Test
+	 public void testQueryChargeList(){
+		 List<Charge> chargelist = new ArrayList<Charge>();
+		 chargelist = chargeDao.queryChargeList();
+		 assertEquals("2",chargelist.get(0).getChargeid());
+		 //System.out.println();
+	 }
+	
+}

@@ -1,0 +1,23 @@
+package com.teamtwo.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.teamtwo.pojo.Tuser;
+import com.teamtwo.util.ReturnMsg;
+
+public interface TuserService {
+
+	Map<String, Object> checkTuser(Tuser tuser);
+
+	List<HashMap<String, Object>> selectAllTuser();
+
+	ReturnMsg addTuser(Tuser tuser);
+
+	ReturnMsg updateTuser(Tuser tuser);
+
+	Map<String,Object> lookOneTuser(Integer userid);
+
+	
+}

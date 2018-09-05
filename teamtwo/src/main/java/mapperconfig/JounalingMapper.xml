@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teamtwo.mapper.JournalingMapper" >
+
+  <resultMap id="BaseResultMap" type="com.teamtwo.pojo.Torder" >
+    <id column="orderid" property="orderid" jdbcType="INTEGER" />
+    <result column="customid" property="customid" jdbcType="INTEGER" />
+    <result column="startaddr" property="startaddr" jdbcType="VARCHAR" />
+    <result column="sendtime" property="sendtime" jdbcType="DATE" />
+    <result column="sendname" property="sendname" jdbcType="VARCHAR" />
+    <result column="sendphone" property="sendphone" jdbcType="VARCHAR" />
+    <result column="endaddr" property="endaddr" jdbcType="VARCHAR" />
+    <result column="recvname" property="recvname" jdbcType="VARCHAR" />
+    <result column="recvphone" property="recvphone" jdbcType="VARCHAR" />
+    <result column="startpointid" property="startpointid" jdbcType="INTEGER" /> 
+    <result column="endpointid" property="endpointid" jdbcType="INTEGER" /> 
+    <result column="weight" property="weight" jdbcType="DOUBLE" />
+    <result column="volume" property="volume" jdbcType="DOUBLE" />
+    <result column="cost" property="cost" jdbcType="DOUBLE" />
+    <result column="statev" property="statev" jdbcType="VARCHAR" />
+    <result column="describeo" property="describe" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+  <!-- 按年份查询 -->
+  <select id="selectByYear" resultType="java.util.HashMap" parameterType="String" >
+    select p.pointname,o.startpointid pointid, sum(weight) w,sum(volume) v,sum(cost) c 
+     from  torder o
+     inner JOIN point p on o.startpointid = p.pointid
+     where statev = '通过' and date_format(sendtime,'%Y') = #{startYear,jdbcType=VARCHAR}
+     group by o.startpointid;
+  </select>
+  
+  <!-- 按月份查询 -->
+  <select id="selectByMonth" resultType="java.util.HashMap" parameterType="String" >
+    select p.pointname,o.startpointid pointid, sum(weight) w,sum(volume) v,sum(cost) c 
+     from  torder o
+     inner JOIN point p on o.startpointid = p.pointid
+     where statev = '通过' and date_format(sendtime,'%Y-%m') = #{startMonth,jdbcType=VARCHAR}
+     group by o.startpointid;
+  </select>
+  
+  <!-- 按季度查询 -->
+  <select id="selectByQuarter" resultType="java.util.HashMap" >
+    select p.pointname,o.startpointid pointid, sum(weight) w,sum(volume) v,sum(cost) c 
+     from  torder o
+     inner JOIN point p on o.startpointid = p.pointid
+     where statev = '通过' and date_format(sendtime,'%Y-%m') >= #{startt,jdbcType=VARCHAR}
+     and date_format(sendtime,'%Y-%m') &lt;= #{endt,jdbcType=VARCHAR}
+     group by o.startpointid;
+  </select>
+  
+
+</mapper>

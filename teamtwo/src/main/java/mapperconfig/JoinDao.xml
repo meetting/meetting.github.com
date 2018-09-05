@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.JoinDao">
+ <!-- <resultMap id="BaseResultMap" type="com.teamtwo.pojo.Join">
+    <result column="joinid" property="joinid" jdbcType="INTEGER" />
+    <result column="sendpointid" property="sendpointid" jdbcType="INTEGER" />
+    <result column="recvpointid" property="recvpointid" jdbcType="INTEGER" />
+    <result column="jointime" property="jointime" jdbcType="date" />/*错误么？十多个三个*！！！！！！！！*/
+    <result column="automobileid" property="automobileid" jdbcType="INTEGER" />
+  </resultMap>   -->
+  
+
+   <!--  <select id="getRoad" resultMap="BaseResultMap">
+      select 
+      *
+      from class
+    </select>  -->
+    
+    <!-- <select id="queryJoin" resultMap="BaseResultMap">
+       select * from tbjoin where tbjoin.sendpointid=(select pointid from point where pointaddr=#{startpointaddr,jdbcType=VARCHAR}) 
+       and tbjoin.recvpointid=(select pointid from point where pointaddr=#{endpointaddr,jdbcType=VARCHAR})
+    </select>   -->
+    
+    <select id="getStartPointName" resultType="java.util.HashMap">
+    select startpointid,concat(pointname,"-",pointaddr) as pointnameaddr from point,road where road.startpointid=point.pointid
+    </select>
+    
+    <select id="getEndPointNames" resultType="java.util.HashMap">
+    select endpointid,concat(pointname,"-",pointaddr) as pointnameaddr from point,road where road.endpointid=point.pointid
+    and startpointid=#{startpointid,jdbcType=INTEGER}
+    </select>
+    
+    <select id="getJoinInfo" resultType="java.util.HashMap">
+     select u.joinid,concat(v.pointname,"-",v.pointaddr) startpointname,concat(w.pointname,"-",w.pointaddr) endpointname,u.jointime,u.automobileid
+     from tbjoin u,point v,point w
+     where u.sendpointid=v.pointid and u.recvpointid=w.pointid
+    </select>
+    
+    <select id="getClassIds" resultType="java.util.HashMap">
+     select classid from class;
+    </select>
+    
+    <select id="getOrderIds" resultType="java.util.HashMap">
+     select orderid from torder;
+    </select>
+    
+    <select id="getOrderByJoinIds" resultType="java.lang.Integer">
+     select orderbyjoinid from orderbyjoin;
+    </select>
+    
+    <select id="getJoinInfoNew" resultType="java.util.HashMap">
+     SELECT CONCAT(r.pointname,"-",r.pointaddr) startpointname,CONCAT(v.pointname,"-",v.pointaddr) endpointname,u.jointime,u.automobileid,z.orderid
+     from tbjoin u,point r,point v,orderbyjoin z
+     where u.sendpointid=r.pointid and u.recvpointid=v.pointid and u.joinid=z.joinid and u.joinid=#{joinid,jdbcType=INTEGER}
+    </select>
+    
+    <insert id="insertJoin">
+    	INSERT INTO
+    	tbjoin(sendpointid,recvpointid,jointime,automobileid)
+    	VALUES
+    		(#{startpointid,jdbcType=INTEGER},#{endpointid,jdbcType=INTEGER},
+    		#{jointime,jdbcType=DATE},#{automobileid,jdbcType=INTEGER})
+    </insert>
+    
+    <insert id="insertBindInfos">
+    	INSERT INTO
+    	orderbyjoin(orderid,joinid,classid)
+    	VALUES
+    		(#{orderid,jdbcType=INTEGER},#{joinid,jdbcType=INTEGER},
+    		#{classid,jdbcType=INTEGER})
+    </insert>
+    
+    <delete id="deleteJoinOrderId">
+    	delete from orderbyjoin where joinid=#{joinid,jdbcType=INTEGER} and orderid=#{orderid,jdbcType=INTEGER}
+    </delete>
+    
+    <!-- <update id="updateClass" parameterType="com.teamtwo.pojo.Class" >
+    update class
+    set roadid = #{roadid,jdbcType=INTEGER}, automobileid = #{automobileid,jdbcType=INTEGER},
+    driverid = #{driverid,jdbcType=INTEGER},startpointid = #{startpointid,jdbcType=INTEGER},
+    endpointid = #{endpointid,jdbcType=INTEGER},weight = #{weight,jdbcType=FLOAT},
+    classendtime = #{classendtime,jdbcType=DATE}
+    where classid = #{classid,jdbcType=INTEGER}
+   </update> -->
+    
+</mapper>

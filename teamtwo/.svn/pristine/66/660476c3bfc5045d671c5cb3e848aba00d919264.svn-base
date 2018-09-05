@@ -1,0 +1,10 @@
+package com.teamtwo.service;
+
+import java.util.Date;
+
+import com.teamtwo.pojo.Join;
+
+public interface JoinService {
+
+	public void insertJoin(String sendpointname,String recvpointname,Date jointime,Integer automobileid);
+}

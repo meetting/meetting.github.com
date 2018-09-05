@@ -1,0 +1,22 @@
+package com.teamtwo.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.teamtwo.mapper.BookingDao;
+import com.teamtwo.service.BookingService;
+
+@Service
+public class BookingServiceImpl implements BookingService {
+
+	@Autowired
+	private BookingDao bookingDao;
+	
+	@Override
+	public List<Map<String,Object>> queryBookingInfo(){
+		return bookingDao.queryBookingInfo();
+	}
+}

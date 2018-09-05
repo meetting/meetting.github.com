@@ -1,0 +1,109 @@
+package com.teamtwo.mapper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Ignore;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.teamtwo.BaseTest;
+import com.teamtwo.mapper.PointDao;
+import com.teamtwo.pojo.City;
+import com.teamtwo.pojo.Point;
+import com.teamtwo.service.PointService;
+
+import static org.junit.Assert.assertEquals;
+
+public class PointDaoTest extends BaseTest {
+
+	 @Autowired
+	 private PointDao pointDao;
+	 @Autowired
+	 private PointService pointService;
+	 
+	 @Test
+	 @Ignore
+	 public void testBatchDeleteByid(){
+		 List<Integer> pointidList = new ArrayList<Integer>();
+		 int pointidone = 8;
+		 int pointidtwo = 9;
+		 pointidList.add(pointidone);
+		 pointidList.add(pointidtwo);
+		 int effectNum = pointDao.batchDeletByid(pointidList);
+		 assertEquals(2,effectNum);
+	 }
+	 
+	 @Test
+	 @Ignore
+	 public void testQueryPointListNoPage(){
+		 List<Point> pointlist = pointService.getPointListNoPage();
+		 System.out.println(pointlist.get(0).getPointname());
+	 }
+	 
+	 @Test
+	 @Ignore
+	 public void testSelectPointname(){
+		 List<String> list = pointDao.selectPointName();
+		 System.out.println(list.get(0));
+	 }
+	 
+	 
+	 @Test
+	 public void testQueryByPointId(){
+		 Point point = pointService.getByPointId(5);
+		
+		 System.out.println("cityid:"+point.getCity().getCityid());
+		 System.out.println("pointname:"+point.getPointname());
+	 }
+	 
+	 
+	 @Test
+	 @Ignore
+	 public void testUpdatePoint(){
+		 Point point  = new Point();
+		 City city = new City();
+		 city.setCityid(11);
+		 point.setPointid(1);
+		 
+		 point.setCity(city);
+		 int effectedNum = pointDao.updatePoint(point);
+		 assertEquals(1,effectedNum);
+	 }
+	 
+	
+	@Test
+	@Ignore
+	/**
+	 * 分页查，由配送点模糊查询
+	 */
+	public void testQueryPointList(){
+		Point pointCondition = new Point();
+		
+		List<Point> pointList = pointDao.queryPointList(pointCondition,0,100);
+		assertEquals(3,pointList.size());
+		assertEquals("北京",pointList.get(1).getPointname());
+		
+	}
+	
+	@Test
+	@Ignore
+	public void testInsertPoint(){
+		
+		Point point = new Point();
+		City city = new City();
+		
+		city.setCityid(1);
+		point.setCity(city);
+		point.setPointname("北京");
+		point.setPointstamp(1234);
+		point.setIcome(100);
+		point.setPointaddr("昌平");
+		point.setPointphone("34566");
+		
+		int effectedNum = pointDao.insertPoint(point);
+		assertEquals(1,effectedNum);
+		
+	}
+	
+}

@@ -1,0 +1,93 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风尚物流</title>
+	<link rel="stylesheet" type="text/css" href="${css}/style.css" />
+    <link rel="stylesheet" href="${css}/base.css"> <!--初始化文件-->
+
+</head>
+<body>
+    <div class="someinformation">
+        <div class="pagemain">
+            <div class="big1">
+                <p class="tit">配送点&nbsp/&nbsp配送点列表</p>
+                <hr>
+                <form action="#" method="post">
+                    <table style="width: 70vw;text-align: center">
+                        <tr>
+                            <th style="width: 15%">
+                                选择框
+                            </th>
+                            <th style="width: 10%">
+                                ID
+                            </th>
+                            <th style="width: 10%">
+                                名称
+                            </th>
+                            <th style="width: 15%">
+                                邮编
+                            </th>
+                            <th style="width: 15%">
+                                地址
+                            </th>
+                            <th style="width: 13%">
+                                电话
+                            </th>
+                            <th style="width: 13%">
+                                总收入
+                            </th>
+                            <th style="width: 13%">
+                                管理员
+                            </th>
+                            <th style="width: 22%">
+                                修改
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td >
+                                <input type="checkbox">
+                            </td>
+                            <td >
+                                1
+                            </td>
+                            <td>
+                                广州
+                            </td>
+                            <td >
+                                510640
+                            </td>
+                            <td>
+                                五山
+                            </td>
+                            <td >
+                                5354
+                            </td>
+                            <td >
+                                100
+                            </td>
+                            <td >
+                                小李子
+                            </td>
+                            <td >
+                                <input type="button"value="修改">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" value="增加"><input type="button" value="删除">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

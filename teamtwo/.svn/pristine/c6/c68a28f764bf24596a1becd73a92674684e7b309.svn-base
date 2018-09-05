@@ -1,0 +1,32 @@
+package com.teamtwo.controller;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.teamtwo.service.JoinService;
+
+/**
+ * 交接单信息管理
+ * @author stars_admin
+ *
+ */
+@Controller
+public class JoinController {
+
+	@Autowired
+	private JoinService joinservice;
+	
+	/**
+	 * 增加/生成交接单
+	 * @param Class
+	 * @return String
+	 */
+	@RequestMapping(value="/jiaojiebiao_add")
+	public String addClass(String sendpointname,String recvpointname,Date jointime,Integer automobileid){
+		joinservice.insertJoin(sendpointname,recvpointname,jointime,automobileid);
+		return "jiaojiebiao_find";
+	}
+}

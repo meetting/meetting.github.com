@@ -1,0 +1,33 @@
+package com.teamtwo.mapper;
+
+import java.util.List;
+
+import com.teamtwo.pojo.Point;
+
+public interface PointDao {
+	
+	/**
+	 * 查询配送点
+	 * @return 配送点列表
+	 */
+	List<Point> queryPoint();
+	
+	/**
+	 * 新增配送点
+	 * @param point
+	 */
+	public void insertPoint(Point point);
+	
+	/**
+	 * 删除配送点
+	 * @param pointid
+	 */
+	public void delPoint(int pointid);
+	
+	/**
+	 * 配送点修改
+	 * @param point
+	 */
+    public void updatePoint(Point point);
+
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.PointDao">
+	
+	<!-- 联合查询用到 -->
+	<resultMap type="com.teamtwo.pojo.Point" id="pointMap">
+      <!-- column对应数据库中的，property对应实体类中的属性 -->
+      <id column="pointid" property="pointid"/>
+      <id column="pointname" property="pointname"/>
+      <id column="pointstamp" property="pointstamp"/>
+      <id column="pointaddr" property="pointaddr"/>
+      <id column="pointphone" property="pointphone"/>
+      <id column="icome" property="icome"/>
+      
+      <!-- 复合类型 -->
+      <association property="city" column="cityid" javaType="com.teamtwo.pojo.City">
+        <id column="cityid" property="cityid"/>
+        <result column="city" property="city"/>
+      </association>
+    </resultMap>
+    
+    <select id="queryPointListNoPage" resultType="com.teamtwo.pojo.Point">
+    	SELECT 
+    	pointid,
+    	cityid,
+    	pointname,
+    	pointstamp,
+    	pointaddr,
+    	pointphone,
+    	icome
+    	FROM point
+    </select>
+    
+    <select id="selectPointName" resultType="String">
+    SELECT DISTINCT
+    	pointname 
+    	FROM point
+    </select>
+    
+    
+	<!-- 按条件配送点查询 -->
+    <select id="queryPointList" resultMap="pointMap">
+        SELECT
+    	p.pointid,
+    	p.pointname,
+    	p.pointstamp,
+    	p.pointaddr,
+    	p.pointphone,
+    	p.icome,
+    	c.cityid,
+    	c.city
+    FROM
+    	point p,
+    	city c
+    <where>
+    <!-- 根据配送点名称模糊查询 -->
+    <if test = "pointCondition.pointname != null">
+    and p.pointname like '%#{pointCondition.pointname}%'
+    </if>
+    AND
+    p.cityid = c.cityid
+    LIMIT #{rowIndex},#{pageSize};
+    
+    </where>
+    </select>
+    
+   <!-- 参数是point实体对象,其中staff在数据库中只需要staffname --> 
+    <insert id="insertPoint" useGeneratedKeys="true" keyColumn="pointid" keyProperty="pointid">
+    	INSERT INTO
+    	point(cityid,pointname,pointstamp,pointaddr,pointphone,icome)
+    	VALUES
+    		(#{city.cityid},#{pointname},#{pointstamp},#{pointaddr},#{pointphone},#{icome})
+    </insert>
+    
+    <!-- 更新店铺的信息 -->
+    <update id="updatePoint" parameterType="com.teamtwo.pojo.Point">
+    update point
+    <set>
+    <if test = "pointname != null">pointname=#{pointname},</if>
+    <if test = "pointstamp != null">pointstamp=#{pointstamp},</if>
+    <if test = "pointaddr != null">pointaddr=#{pointaddr},</if>
+    <if test = "pointphone != null">pointphone=#{pointphone},</if>
+    <if test = "icome != null">icome=#{icome},</if>
+    <if test = "city != null">cityid=#{city.cityid}</if>
+    </set>
+    where pointid=#{pointid}
+    </update>
+    
+    
+    <select id="queryByPointId" resultMap="pointMap" parameterType="Integer" >
+    SELECT
+    	p.pointid,
+    	p.pointname,
+    	p.pointstamp,
+    	p.pointaddr,
+    	p.pointphone,
+    	p.icome,
+    	c.cityid,
+    	c.city
+    FROM
+    	point p,
+    	city c
+    WHERE
+    	p.cityid = c.cityid
+    AND
+    	p.pointid = #{pointid}
+    </select>
+</mapper>

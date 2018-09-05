@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teamtwo.mapper.TuserMapper" >
+
+  <resultMap id="BaseResultMap" type="com.teamtwo.pojo.Tuser" >
+    <id column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="pointid" property="pointid" jdbcType="INTEGER" />
+    <result column="roleid" property="roleid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="addr" property="addr" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    
+  </resultMap>
+ 
+  <sql id="tuser" >
+    pointid, roleid, username, password, tel, addr, realname 
+  </sql>
+  
+  <!-- 用户登录验证 -->
+  <select id="selectByUsernameAndPassword" resultType="java.util.HashMap" parameterType="com.teamtwo.pojo.Tuser" >
+    select 
+    u.userid, u.username, r.rolename 
+    from tuser u
+    inner  JOIN  role r on u.roleid = r.roleid
+    where username = #{username,jdbcType=VARCHAR}
+    and password = #{password,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 通过id查询一个用户的所有信息 -->
+  <select id="lookOneTuser" resultType="java.util.HashMap" parameterType="INTEGER" >
+    select 
+    u.userid,  u.username, u.password, u.tel, u.addr, u.realname,u.pointid, p.pointname, u.roleid, r.rolename
+    from tuser u
+    inner JOIN  role r on u.roleid = r.roleid 
+    inner JOIN point p on u.pointid = p.pointid
+    where u.userid = #{userid,jdbcType=INTEGER}
+  </select>
+  
+  
+  <!-- 查询所有用户 -->
+  <select id="selectAllTuser" resultType="java.util.HashMap"  >
+    select 
+    u.userid, u.username, u.password, u.realname, u.tel , u.addr, u.roleid 
+    from tuser u
+  </select>
+  
+  <!-- 添加用户 -->
+  <insert id="addTuser" parameterType="com.teamtwo.pojo.Tuser" >
+    insert into tuser ( <include refid="tuser" />)
+    values (#{pointid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+    			,#{tel,jdbcType=VARCHAR},#{addr,jdbcType=VARCHAR},#{realname,jdbcType=VARCHAR})
+  </insert>
+  
+  <!-- 修改用户信息 -->
+  <update id="modifyTuser" parameterType="com.teamtwo.pojo.Tuser" >
+    update tuser 
+    set 
+   	pointid = #{pointid,jdbcType=INTEGER},
+   	username = #{username,jdbcType=VARCHAR}, 
+   	password = #{password,jdbcType=VARCHAR},
+   	tel = #{tel,jdbcType=VARCHAR},
+   	addr = #{addr,jdbcType=VARCHAR},
+   	realname = #{realname,jdbcType=VARCHAR}
+   	where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 修改用户类型 -->
+  <update id="modifyRoleid" parameterType="com.teamtwo.pojo.Tuser" >
+    update tuser 
+    set 
+   	roleid = #{roleid,jdbcType=INTEGER}
+   	where userid = #{userid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 删除用户 -->
+  <delete id="delTuser" parameterType="java.lang.Integer" >
+    delete from tuser
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 通过username查询一个用户的所有信息 -->
+  <select id="checkun" resultType="com.teamtwo.pojo.Tuser" parameterType="java.lang.String" >
+    select 
+    *
+    from tuser
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+</mapper>
+

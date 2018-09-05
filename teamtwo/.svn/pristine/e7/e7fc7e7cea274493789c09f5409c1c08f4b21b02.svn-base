@@ -1,0 +1,23 @@
+package com.teamtwo.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.teamtwo.mapper.PointDao;
+import com.teamtwo.pojo.Point;
+import com.teamtwo.service.PointService;
+
+@Service
+public class PointServiceImpl implements PointService {
+	@Autowired
+	private PointDao pointDao;
+
+	@Override
+	public List<Point> getPointList() {
+		return pointDao.queryPoint();
+	}
+	
+
+}

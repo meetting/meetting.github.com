@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.BookingDao">
+  
+    <!-- 参数是class实体对象,其中staff在数据库中只需要staffname --> 
+    <select id="queryBookingInfo" resultType="java.util.HashMap">
+      select u.orderid,u.customid,u.startaddr,u.sendtime,u.sendname,u.sendphone,u.endaddr,u.recvname,u.recvphone,CONCAT(v.pointname,":",v.pointaddr) pointname,u.weight,u.volume,u.cost,u.statev,u.describe 
+      from torder u,point v
+      where u.pointid=v.pointid
+    </select>
+    
+    <!-- <insert id="insertClass" parameterType="com.teamtwo.pojo.Class">
+    	INSERT INTO
+    	class(roadid,automobileid,driverid,startpointid,endpointid,weight,classendtime)
+    	VALUES
+    		(#{roadid},#{automobileid},#{driverid},#{startpointid},#{endpointid},#{weight},#{classendtime})
+    </insert>
+    
+    <update id="updateClass" parameterType="com.teamtwo.pojo.Class" >
+    update class
+    set roadid = #{roadid,jdbcType=INTEGER}, automobileid = #{automobileid,jdbcType=INTEGER},
+    driverid = #{driverid,jdbcType=INTEGER},startpointid = #{startpointid,jdbcType=INTEGER},
+    endpointid = #{endpointid,jdbcType=INTEGER},weight = #{weight,jdbcType=FLOAT},
+    classendtime = #{classendtime,jdbcType=DATE}
+    where classid = #{classid,jdbcType=INTEGER}
+   </update> -->
+    
+</mapper>

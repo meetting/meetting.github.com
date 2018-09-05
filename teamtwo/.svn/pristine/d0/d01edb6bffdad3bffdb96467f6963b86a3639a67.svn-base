@@ -1,0 +1,110 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风尚物流</title>
+   <link rel="stylesheet" type="text/css" href="${css}/style.css" />
+    <link rel="stylesheet" href="${css}/base.css"> <!--初始化文件-->
+
+    <script src="${include}/js/laydate/laydate.js"></script> <!--主样式-->
+    <script src="${include}/js/timejs.js"></script>
+
+</head>
+<body>
+
+    <div class="someinformation">
+        <div class="pagemain">
+            <div class="big2">
+                <p class="tit">运力&nbsp/&nbsp增加运力</p>
+                <hr>
+                <form action="addtransportcapacity" method="post">
+                    <table>
+                        <tr>
+                            <td style="width: 60%;text-align: center;display:none">
+                                运力编号
+                            </td>
+                            <td style="width: 40%;visibility:hidden">
+                                <input type="text" name="classid">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                路线编号
+                            </td>
+                            <td >
+                                <input type="text" name="roadid">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                车辆编号
+                            </td>
+                            <td >
+                                <input type="text" name="automobileid">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                司机编号
+                            </td>
+                            <td >
+                                <input type="text" name="driverid">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                上行配送点
+                            </td>
+                            <td >
+                                <input type="text" name="startpointid">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                下行配送点
+                            </td>
+                            <td >
+                                <input type="text" name="endpointid">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                货物重量
+                            </td>
+                            <td >
+                                <input type="text" name="weight">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                上行到达时间
+                            </td>
+                            <td >
+                                <input type="text" name="classendtime">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td >
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                            </td>
+                            <td style="float: right">
+                                <input type="submit" value="提交">
+                                <input type="reset" value="重写">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

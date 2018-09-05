@@ -1,0 +1,10 @@
+package com.teamtwo.mapper;
+
+import com.teamtwo.pojo.Automobile;
+
+public interface AutoMobileDao {
+
+	public void addMobile(Automobile automobile);
+	
+	public void modifyMobile(Automobile automobile);
+}

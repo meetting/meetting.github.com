@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.ChargeDao">
+	
+	<!-- 联合查询用到 -->
+	<resultMap type="com.teamtwo.pojo.Charge" id="chargeMap">
+      <!-- column对应数据库中的，property对应实体类中的属性 -->
+      <id column="chargeid" property="chargeid"/>
+      <id column="startpoint" property="startpoint"/>
+      <id column="endpoint" property="endpoint"/>
+      <id column="firstweight" property="firstweight"/>
+      <id column="firstweightprice" property="firstweightprice"/>
+      <id column="secondweight" property="secondweight"/>
+      <id column="secondweightprice" property="secondweightprice"/>
+      <id column="firstvol" property="firstvol"/>
+      <id column="firstvolprice" property="firstvolprice"/>
+      <id column="secondvol" property="secondvol"/>
+      <id column="secondvolprice" property="secondvolprice"/>
+      <id column="chargestate" property="chargestate"/>
+      <id column="chargeremarks" property="chargeremarks"/>
+      
+      <!-- 复合类型 -->
+      <association property="point" column="pointid" javaType="com.teamtwo.pojo.Point">
+        <id column="pointid" property="pointid"/>
+        <result column="pointname" property="pointname"/>
+      </association>
+    </resultMap>
+    
+	<select id="queryChargeList" resultType="com.teamtwo.pojo.Charge">
+	SELECT 
+		c.chargeid,
+		c.startpoint,
+		c.endpoint,
+		c.firstweight,
+		c.firstweightprice,
+		c.secondweight,
+		c.secondweightprice,
+		c.firstvol,
+		c.firstvolprice,
+		c.secondvol,
+		c.secondvolprice,
+		c.chargestate,
+		c.chargeremarks,
+    	FROM 
+    	charge c
+	</select>
+	
+	
+</mapper>

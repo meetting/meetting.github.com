@@ -1,0 +1,42 @@
+package com.teamtwo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.teamtwo.pojo.Automobile;
+import com.teamtwo.service.AutoMobileService;
+
+/**
+ * 车辆信息管理
+ * @author stars_admin
+ *
+ */
+@Controller
+public class AutoMobileController {
+
+	@Autowired
+	private AutoMobileService automobileService;
+	
+	/**
+	 * 增加车辆信息
+	 * @param automobile
+	 * @return String
+	 */
+	@RequestMapping(value="/transportcapacity_add_vehicle")
+	public String addMobile(Automobile automobile){
+		automobileService.addAutomobile(automobile);
+		return "index";
+	}
+	
+	/**
+	 * 修改车辆信息
+	 * @param automobile
+	 * @return String
+	 */
+	@RequestMapping(value="/transportcapacity_modify_vehicle")
+	public String modifyMobile(Automobile automobile){
+		automobileService.modifyAutomobile(automobile);
+		return "index";
+	}
+}

@@ -1,0 +1,34 @@
+package com.teamtwo.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.teamtwo.mapper.RoadDao;
+import com.teamtwo.pojo.Road;
+import com.teamtwo.service.RoadService;
+@Service
+public class RoadServiceImpl implements RoadService {
+
+	@Autowired
+	private RoadDao roaddao;
+	
+	@Override
+	public void addRoad(Road road) {
+
+		roaddao.addRoad(road);
+	}
+	
+	@Override
+	public List<Road> queryRoad() {
+
+		return roaddao.getRoad();
+	}
+
+	@Override
+	public List<Road> seekRoadById(Integer id){
+		
+	    return roaddao.getRoadById(id);
+	}
+}

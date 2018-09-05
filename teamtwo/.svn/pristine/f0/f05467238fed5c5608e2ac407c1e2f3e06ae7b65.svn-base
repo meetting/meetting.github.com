@@ -1,0 +1,43 @@
+package com.teamtwo;
+
+
+import java.util.List;
+import java.util.Map;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.teamtwo.mapper.TuserMapper;
+import com.teamtwo.pojo.Role;
+import com.teamtwo.pojo.Tuser;
+import com.teamtwo.service.RoleService;
+
+
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="classpath:spring-root.xml")
+public class TuserTest {
+	@Autowired
+	private TuserMapper tuserMapper;
+	
+	@Test
+	public void test1(){
+		
+		Tuser tuser = new Tuser();
+		tuser.setUsername("root");
+		tuser.setPassword("root");
+		System.out.println(tuser.getUsername());
+		System.out.println(tuser.getPassword()); 
+		
+		Map<String,String> user = tuserMapper.selectByUsernameAndPassword(tuser); 
+		
+//		for (String key : user.keySet()) {
+//	        System.out.println("key= " + key + " and value= " + user.get(key));
+//	    }
+	}
+	
+
+}

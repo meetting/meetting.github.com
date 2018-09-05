@@ -1,0 +1,14 @@
+package com.teamtwo.mapper;
+
+import java.util.List;
+
+import com.teamtwo.pojo.Charge;
+
+public interface ChargeDao {
+
+	
+	List<Charge> queryChargeList();
+	
+	
+	
+}

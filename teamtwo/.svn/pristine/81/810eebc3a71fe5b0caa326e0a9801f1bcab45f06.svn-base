@@ -1,0 +1,12 @@
+package com.teamtwo.service;
+
+import java.util.Map;
+
+import com.teamtwo.pojo.Tuser;
+
+public interface TuserService {
+
+	Map<String, String> checkTuser(Tuser tuser);
+
+	
+}

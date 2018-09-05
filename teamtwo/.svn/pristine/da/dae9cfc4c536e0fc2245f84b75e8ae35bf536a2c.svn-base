@@ -1,0 +1,14 @@
+package com.teamtwo.service;
+
+import java.util.List;
+
+import com.teamtwo.pojo.Charge;
+
+public interface ChargeService {
+
+	/**
+	 * 查询收费
+	 * @return
+	 */
+	List<Charge> queryChargeList();
+}

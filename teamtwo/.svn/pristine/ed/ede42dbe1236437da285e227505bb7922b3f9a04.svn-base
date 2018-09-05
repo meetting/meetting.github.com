@@ -1,0 +1,133 @@
+package com.teamtwo.pojo;
+
+public class Charge {
+    private Integer chargeid;
+
+    private Integer startpoint;
+
+    private Integer endpotint;
+
+    private Float firstweight;
+
+    private Float firstweightprice;
+
+    private Float secondweight;
+
+    private Float secondweightprice;
+
+    private Float firstvol;
+
+    private Float firstvolprice;
+
+    private Float secondvol;
+
+    private Float secondvolprice;
+
+    private String chargestate;
+
+    private String chargeremarks;
+
+    public Integer getChargeid() {
+        return chargeid;
+    }
+
+    public void setChargeid(Integer chargeid) {
+        this.chargeid = chargeid;
+    }
+
+    public Integer getStartpoint() {
+        return startpoint;
+    }
+
+    public void setStartpoint(Integer startpoint) {
+        this.startpoint = startpoint;
+    }
+
+    public Integer getEndpotint() {
+        return endpotint;
+    }
+
+    public void setEndpotint(Integer endpotint) {
+        this.endpotint = endpotint;
+    }
+
+    public Float getFirstweight() {
+        return firstweight;
+    }
+
+    public void setFirstweight(Float firstweight) {
+        this.firstweight = firstweight;
+    }
+
+    public Float getFirstweightprice() {
+        return firstweightprice;
+    }
+
+    public void setFirstweightprice(Float firstweightprice) {
+        this.firstweightprice = firstweightprice;
+    }
+
+    public Float getSecondweight() {
+        return secondweight;
+    }
+
+    public void setSecondweight(Float secondweight) {
+        this.secondweight = secondweight;
+    }
+
+    public Float getSecondweightprice() {
+        return secondweightprice;
+    }
+
+    public void setSecondweightprice(Float secondweightprice) {
+        this.secondweightprice = secondweightprice;
+    }
+
+    public Float getFirstvol() {
+        return firstvol;
+    }
+
+    public void setFirstvol(Float firstvol) {
+        this.firstvol = firstvol;
+    }
+
+    public Float getFirstvolprice() {
+        return firstvolprice;
+    }
+
+    public void setFirstvolprice(Float firstvolprice) {
+        this.firstvolprice = firstvolprice;
+    }
+
+    public Float getSecondvol() {
+        return secondvol;
+    }
+
+    public void setSecondvol(Float secondvol) {
+        this.secondvol = secondvol;
+    }
+
+    public Float getSecondvolprice() {
+        return secondvolprice;
+    }
+
+    public void setSecondvolprice(Float secondvolprice) {
+        this.secondvolprice = secondvolprice;
+    }
+
+    public String getChargestate() {
+        return chargestate;
+    }
+
+    public void setChargestate(String chargestate) {
+        this.chargestate = chargestate == null ? null : chargestate.trim();
+    }
+
+    public String getChargeremarks() {
+        return chargeremarks;
+    }
+
+    public void setChargeremarks(String chargeremarks) {
+        this.chargeremarks = chargeremarks == null ? null : chargeremarks.trim();
+    }
+}

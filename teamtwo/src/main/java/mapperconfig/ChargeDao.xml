@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.ChargeDao">
+	<resultMap type="com.teamtwo.pojo.Charge" id="chargeMap">
+      <id column="chargeid" property="chargeid"/>
+      <id column="startpoint" property="startpoint"/>
+      <id column="endpoint" property="endpoint"/>
+      <id column="firstweight" property="firstweight"/>
+      <id column="firstweightprice" property="firstweightprice"/>
+      <id column="secondweight" property="secondweight"/>
+      <id column="secondweightprice" property="secondweightprice"/>
+      <id column="firstvol" property="firstvol"/>
+      <id column="firstvolprice" property="firstvolprice"/>
+      <id column="secondvol" property="secondvol"/>
+      <id column="secondvolprice" property="secondvolprice"/>
+      <id column="chargestate" property="chargestate"/>
+      <id column="chargeremarks" property="chargeremarks"/>
+      
+      <!-- 复合类型 -->
+      <association property="startpoint" column="pointid" javaType="com.teamtwo.pojo.Point">
+        <id column="pointid" property="pointid"/>
+        <result column="pointname" property="pointname"/>
+      </association>
+  
+       <association property="endpoint" column="pointid" javaType="com.teamtwo.pojo.Point">
+        <id column="pointid" property="pointid"/>
+        <result column="pointname" property="pointname"/>
+      </association>
+     
+    </resultMap>
+	
+	<select id="queryChargeList" resultType="com.teamtwo.pojo.Charge">
+	SELECT 
+		chargeid,
+		startpoint,
+		endpoint,
+		firstweight,
+		firstweightprice,
+		secondweight,
+		secondweightprice,
+		firstvol,
+		firstvolprice,
+		secondvol,
+		secondvolprice,
+		chargestate,
+		chargeremarks
+    	FROM 
+    	charge
+	</select>
+	
+	<select id="getSeekbyCharge" resultType="com.teamtwo.pojo.Charge">
+	SELECT
+	chargeid,
+		startpoint,
+		endpoint,
+		firstweight,
+		firstweightprice,
+		secondweight,
+		secondweightprice,
+		firstvol,
+		firstvolprice,
+		secondvol,
+		secondvolprice,
+		chargestate,
+		chargeremarks
+		FROM 
+    	charge
+    	WHERE
+    	startpoint = #{startpoint}
+    	AND
+    	endpoint = #{endpoint}
+	</select>
+	
+    <insert id="insertCharge" useGeneratedKeys="true" keyColumn="chargeid" keyProperty="chargeid">
+    	INSERT INTO
+    	charge(startpoint,endpoint,firstweight,firstweightprice,secondweight,secondweightprice,firstvol,firstvolprice,secondvol,secondvolprice)
+    	VALUES
+    		(#{startpoint},#{endpoint},#{firstweight},#{firstweightprice},#{secondweight},#{secondweightprice},#{firstvol},#{firstvolprice},#{secondvol},#{secondvolprice})
+    </insert>
+	
+	<delete id="batchDeletByid" parameterType="java.util.List">
+    DELETE
+    FROM charge
+    WHERE
+    chargeid in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+    #{item}
+    </foreach>
+    </delete>
+    
+    <update id="updateCharge" parameterType="com.teamtwo.pojo.Charge">
+    update charge
+    <set>
+    <if test = "firstweight != null">firstweight=#{firstweight},</if>
+    <if test = "firstweightprice != null">firstweightprice=#{firstweightprice},</if>
+    <if test = "secondweight != null">secondweight=#{secondweight},</if>
+    <if test = "secondweightprice != null">secondweightprice=#{secondweightprice},</if>
+    <if test = "firstvol != null">firstvol=#{firstvol},</if>
+    <if test = "firstvolprice != null">firstvolprice=#{firstvolprice}</if>
+    <if test = "secondvol != null">secondvol=#{secondvol},</if>
+    <if test = "secondvolprice != null">secondvolprice=#{secondvolprice}</if>
+    </set>
+    where chargeid=#{chargeid}
+    </update>
+    
+	<select id="getByChargeId" resultType="com.teamtwo.pojo.Charge" parameterType="Integer" >
+    	SELECT
+    	chargeid,
+		startpoint,
+		endpoint,
+		firstweight,
+		firstweightprice,
+		secondweight,
+		secondweightprice,
+		firstvol,
+		firstvolprice,
+		secondvol,
+		secondvolprice,
+		chargestate,
+		chargeremarks
+    	FROM 
+    	charge
+    	WHERE
+    	chargeid = #{chargeid}
+	</select>
+	
+	<update id="checkChargeResult" parameterType="Integer">
+	UPDATE charge
+	SET
+	chargestatus = #{chargestatus}
+	WHERE
+	chargeid = #{chargeid}
+	</update>
+	
+</mapper>

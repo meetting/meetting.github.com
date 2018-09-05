@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.AutoMobileDao">
+ <!--  <resultMap id="BaseResultMap" type="com.teamtwo.pojo.Class" >
+    <result column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="roadid" property="roadid" jdbcType="INTEGER" />
+    <result column="automobileid" property="automobileid" jdbcType="INTEGER" />
+    <result column="driverid" property="driverid" jdbcType="INTEGER" />
+    <result column="startpointid" property="startpointid" jdbcType="INTEGER" />
+    <result column="endpointid" property="endpointid" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="FLOAT" />
+    <result column="classendtime" property="classendtime" jdbcType="DATE" />
+  </resultMap>
+  
+    参数是class实体对象,其中staff在数据库中只需要staffname 
+    <select id="queryClass" resultMap="BaseResultMap">
+      select 
+      classid,roadid,automobileid,driverid,startpointid,endpointid,weight,classendtime
+      from class
+    </select> -->
+    
+    <insert id="addMobile" parameterType="com.teamtwo.pojo.Automobile">
+    	INSERT INTO
+    	automobile(automobileid,cartweight,carvolume,cartate,pointid)
+    	VALUES
+    		(#{automobileid},#{cartweight},#{carvolume},#{cartate},#{pointid})
+    </insert>
+    
+    <update id="modifyMobile" parameterType="com.teamtwo.pojo.Automobile" >
+    update automobile
+    set cartweight = #{cartweight,jdbcType=VARCHAR}, carvolume = #{carvolume,jdbcType=VARCHAR},
+    cartate = #{cartate,jdbcType=VARCHAR},pointid = #{pointid,jdbcType=INTEGER}
+    where automobileid = #{automobileid,jdbcType=INTEGER}
+   </update> 
+    
+</mapper>

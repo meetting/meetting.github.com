@@ -1,0 +1,24 @@
+package com.teamtwo.service.impl;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.teamtwo.mapper.JoinDao;
+import com.teamtwo.pojo.Join;
+import com.teamtwo.service.JoinService;
+
+@Service
+public class JoinServiceImpl implements JoinService {
+
+	@Autowired
+	private JoinDao joindao;
+	
+	@Override
+	public void insertJoin(String sendpointname,String recvpointname,Date jointime,Integer automobileid) {
+		
+		joindao.insertJoin(sendpointname,recvpointname,jointime,automobileid);
+	}
+
+}

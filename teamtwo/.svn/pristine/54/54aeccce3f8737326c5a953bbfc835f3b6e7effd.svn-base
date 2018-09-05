@@ -1,0 +1,11 @@
+package com.teamtwo.mapper;
+
+import java.util.List;
+
+import com.teamtwo.pojo.City;
+
+public interface OcMapper {
+	
+	List<City> getCitys();
+
+}

@@ -1,0 +1,93 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风尚物流</title>
+
+   <link rel="stylesheet" type="text/css" href="${css}/style.css" />
+    <link rel="stylesheet" href="${css}/base.css"> <!--初始化文件-->
+
+</head>
+<body>
+
+    <div class="someinformation">
+        <div class="pagemain">
+            <div class="big1">
+                <p class="tit">交接表&nbsp/&nbsp查询交接表</p>
+                <hr>
+                <form action="#" method="post">
+                    <table >
+                        <tr>
+                            <td style="width: 20%;text-align: center">
+                                交接单号
+                            </td>
+                            <td style="width: 15%">
+                                <input type="text" name="" value="CX123">
+                            </td>
+                            <td style="width: 15%;text-align: center">
+                                始发地
+                            </td>
+                            <td style="width: 15%">
+                                <input type="text" name="" value="广州">
+                            </td>
+                            <td style="width: 20%;text-align: center">
+                                目的地
+                            </td>
+                            <td style="width: 15%">
+                                <input type="text" name="" value="北京">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">
+                                日期
+                            </td>
+                            <td >
+                                <input type="text" name="" value="2018-08-11">
+                            </td>
+                            <td style="text-align: center">
+                               始发地
+                            </td>
+                            <td>
+                                <input type="text" name="" value="TX168">
+                            </td>
+                            <td style="width: 20%;text-align: center">
+                                承运人签名：
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <table >
+                        <tr>
+                            <td colspan="2" style="width: 60%">
+                                订单号：
+                            </td>
+                            <td style="width: 40%">
+                                接收人签名：
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  style="width: 30%;">
+                                2020
+                            </td>
+                            <td  style="width: 30%;">
+                                <input type="checkbox" name="" value="" />
+                            </td>
+                            <td style="width: 40%">
+
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <input type="button" style="float: right" value="删除订单号">
+                    <input type="button" style="float: right" value="打印交接单">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

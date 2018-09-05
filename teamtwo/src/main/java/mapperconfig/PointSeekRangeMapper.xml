@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.teamtwo.mapper.PointSeekRangeMapper" >
+
+  <resultMap id="BaseResultMap" type="com.teamtwo.pojo.Tuser" >
+    <id column="chargeid" property="chargeid" jdbcType="INTEGER" />
+    <result column="startpoint" property="startpoint" jdbcType="INTEGER" />
+    <result column="endpoint" property="endpoint" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!-- 通过pointid查询配送范围 -->
+  <select id="sbpointid" resultType="java.util.HashMap" parameterType="INTEGER" >
+    select 
+    c.startpoint startpointid, p.pointname startpointname, c.endpoint endpointid, po.pointname endpointname
+    from charge c
+    inner  JOIN  point p on c.startpoint = p.pointid
+    inner  JOIN  point po on  c.endpoint = po.pointid
+    where c.startpoint = #{pointid,jdbcType=INTEGER}
+  </select>
+
+</mapper>

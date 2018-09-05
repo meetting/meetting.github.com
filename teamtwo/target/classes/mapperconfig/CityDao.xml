@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamtwo.mapper.CityDao">
+	<insert id="insertCity" useGeneratedKeys="true" keyColumn="cityid" keyProperty="cityid">
+		INSERT INTO
+		city(provice,city,district)
+		VALUES
+			(#{provice},#{city},#{district})
+	</insert>
+
+	<select id="selectIdByPcd" resultType="int" parameterType="com.teamtwo.pojo.City">
+		SELECT
+			cityid
+			FROM
+			city c
+			WHERE
+			c.provice = #{provice}
+			AND
+			c.city = #{city}
+			AND
+			c.district = #{district}
+			
+	</select>
+	<select id="selectById" resultType="com.teamtwo.pojo.City">
+		SELECT
+			cityid,
+			provice,
+			city,
+			district
+			FROM
+			city
+			WHERE
+			cityid = #{cityid}
+	</select>
+	
+	
+</mapper>
